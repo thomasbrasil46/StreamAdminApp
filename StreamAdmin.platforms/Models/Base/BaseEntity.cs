@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StreamAdmin.platforms.Models.Base
+namespace StreamAdmin.Catalog.Models.Base
 {
     public class BaseEntity
     {

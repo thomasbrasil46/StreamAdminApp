@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using StreamAdmin.platforms.Models.Context;
+using StreamAdmin.Catalog.Models.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-var connectionString = builder.Configuration.GetConnectionString("MySqlConnection:MySqlConnectionString");
+var connectionString = builder.Configuration.GetConnectionString("MySqlConnection")
+    ?? throw new InvalidOperationException(
+        "A connection string 'MySqlConnection' nao foi configurada.");
 
 builder.Services.AddDbContext<MySQLContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));

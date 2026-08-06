@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using StreamAdmin.Catalog;
 
 namespace StreamAdmin.platforms.Controllers
 {

@@ -1,4 +1,4 @@
-namespace StreamAdmin.platforms
+namespace StreamAdmin.Catalog
 {
     public class WeatherForecast
     {

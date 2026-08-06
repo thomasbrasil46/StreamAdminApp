@@ -361,3 +361,35 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# ==================================================
+# Configurações locais e informações sensíveis
+# ==================================================
+
+# Configurações locais do ASP.NET Core
+**/appsettings.Local.json
+**/appsettings.*.Local.json
+**/appsettings.local.json
+**/appsettings.*.local.json
+
+# Arquivos de ambiente do frontend
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+
+# Credenciais e segredos
+**/secrets.json
+**/credentials.json
+**/credentials.*
+**/*credentials*.json
+**/*secrets*.json
+
+# Certificados e chaves privadas
+**/*.p12
+**/*.pem
+**/*.key
+**/*.ppk
+
+# Arquivos locais genéricos
+**/*.local
