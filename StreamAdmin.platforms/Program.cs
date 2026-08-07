@@ -1,4 +1,6 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using StreamAdmin.Catalog.Config;
 using StreamAdmin.Catalog.Models.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,10 @@ var connectionString = builder.Configuration.GetConnectionString("MySqlConnectio
 
 builder.Services.AddDbContext<MySQLContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
+
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
