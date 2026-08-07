@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Logging.Abstractions;
+using StreamAdmin.Catalog.Data.ValueObjects;
+using StreamAdmin.Catalog.Models;
 
 namespace StreamAdmin.Catalog.Config
 {
@@ -8,9 +11,11 @@ namespace StreamAdmin.Catalog.Config
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<Models.Platform, Data.ValueObjects.PlatformVO>();
-                config.CreateMap<Data.ValueObjects.PlatformVO, Models.Platform>();
-            });
+                config.CreateMap<PlatformVO, StreamingPlatform>();
+                config.CreateMap<StreamingPlatform, PlatformVO>();
+            },
+            NullLoggerFactory.Instance);
+
             return mappingConfig;
         }
     }

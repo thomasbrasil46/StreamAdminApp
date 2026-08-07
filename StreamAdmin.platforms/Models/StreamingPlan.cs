@@ -13,12 +13,12 @@ namespace StreamAdmin.Catalog.Models
 
         [Column("spln_name")]
         [Required]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         [Column("spln_description")]
         [Required]
         [StringLength(250)]
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
         [Column("spln_referenceprice")]
         [Required]
@@ -32,7 +32,7 @@ namespace StreamAdmin.Catalog.Models
         public int? MaximumScreens { get; set; }
 
         [Column("spln_maximumresolution")]
-        public string MaximumResolution { get; set; }
+        public string MaximumResolution { get; set; } = null!;
 
         [Column("spln_hasads")]
         [Required]

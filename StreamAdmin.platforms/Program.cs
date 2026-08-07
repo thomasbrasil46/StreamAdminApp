@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using StreamAdmin.Catalog.Config;
 using StreamAdmin.Catalog.Models.Context;
+using StreamAdmin.Catalog.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,9 +19,14 @@ var connectionString = builder.Configuration.GetConnectionString("MySqlConnectio
 builder.Services.AddDbContext<MySQLContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
 
-IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
-builder.Services.AddSingleton(mapper);
-//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(
+    cfg => { },
+    typeof(CatalogProfile).Assembly
+);
+
+//ToDo: Óbservar quando será necessário fazer a implementação das interfaces de repository criadas anteriormente.
+//builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
+//builder.Services.AddScoped<IPlanRepository, PlanRepository>();
 
 var app = builder.Build();
 

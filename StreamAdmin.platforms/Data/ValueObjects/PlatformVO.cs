@@ -7,10 +7,10 @@ namespace StreamAdmin.Catalog.Data.ValueObjects
     public class PlatformVO
     {
         public long Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string WebSiteUrl { get; set; }
+        public string Name { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public string WebSiteUrl { get; set; } = null!;
         public bool IsActive { get; set; }
-        public ICollection<StreamingPlan> Plans { get; set; }
+        public ICollection<StreamingPlan> Plans { get; set; } = null!;
     }
 }
