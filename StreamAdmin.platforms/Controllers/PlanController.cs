@@ -8,25 +8,25 @@ namespace StreamAdmin.Catalog.Controllers
     [ApiController]
     public class PlanController : ControllerBase
     {
-        private IPlanRepository _planrRepository;
+        private IPlanRepository _planRepository;
 
-        public PlanController(IPlanRepository planrRepository)
+        public PlanController(IPlanRepository planRepository)
         {
-            _planrRepository = planrRepository ?? throw new
-                ArgumentNullException(nameof(planrRepository));
+            _planRepository = planRepository ?? throw new
+                ArgumentNullException(nameof(planRepository));
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlanVO>>> GetAllPlans()
         {
-            var plans = await _planrRepository.FindAllPlans();
+            var plans = await _planRepository.FindAllPlans();
             return Ok(plans);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<PlanVO>> GetPlanById(long id)
         {
-            var plan = await _planrRepository.FindById(id);
+            var plan = await _planRepository.FindById(id);
             if (plan == null)
                 return NotFound();
             return Ok(plan);

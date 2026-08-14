@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StreamAdmin.Catalog.Data.ValueObjects;
+using StreamAdmin.Catalog.Models;
 using StreamAdmin.Catalog.Models.Context;
 
 namespace StreamAdmin.Catalog.Repository
@@ -16,29 +18,49 @@ namespace StreamAdmin.Catalog.Repository
             _mapper = mapper;
         }
 
-        public Task<PlanVO> FindById(long id)
+        public async Task<PlanVO> FindById(long id)
         {
-            throw new NotImplementedException();
+            StreamingPlan? plan = await _context.StreamingPlans.Where(p => p.Id == id).FirstOrDefaultAsync();
+            return _mapper.Map<PlanVO>(plan);
         }
 
-        public Task<IEnumerable<PlanVO>> FindAllPlans()
+        public async Task<IEnumerable<PlanVO>> FindAllPlans()
         {
-            throw new NotImplementedException();
+            List<StreamingPlan> plans = await _context.StreamingPlans.ToListAsync();
+            return _mapper.Map<List<PlanVO>>(plans);
         }
 
-        public Task<PlanVO> CreatePlan(PlanVO plan)
+        public async Task<PlanVO> CreatePlan(PlanVO plan)
         {
-            throw new NotImplementedException();
+            StreamingPlan streamingPlan = _mapper.Map<StreamingPlan>(plan);
+            _context.StreamingPlans.Add(streamingPlan);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<PlanVO>(streamingPlan);
         }
 
-        public Task<PlanVO> UpdatePlan(PlanVO plan)
+        public async Task<PlanVO> UpdatePlan(PlanVO plan)
         {
-            throw new NotImplementedException();
+            StreamingPlan streamingPlan = _mapper.Map<StreamingPlan>(plan);
+            _context.StreamingPlans.Update(streamingPlan);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<PlanVO>(streamingPlan);
         }
 
-        public Task<bool> DeletePlan(long id)
+        public async Task<bool> DeletePlan(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                StreamingPlan? plan = await _context.StreamingPlans.Where(p => p.Id == id).FirstOrDefaultAsync();
+                if (plan == null)
+                    return false;
+                _context.StreamingPlans.Remove(plan);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

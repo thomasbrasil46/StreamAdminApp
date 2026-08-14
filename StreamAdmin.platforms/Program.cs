@@ -26,6 +26,7 @@ builder.Services.AddAutoMapper(
 
 //ToDo: Óbservar quando será necessário fazer a implementação das interfaces de repository criadas anteriormente.
 builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
+builder.Services.AddScoped<IPlanRepository, PlanRepository>();
 //builder.Services.AddScoped<IPlanRepository, PlanRepository>();
 
 var app = builder.Build();
