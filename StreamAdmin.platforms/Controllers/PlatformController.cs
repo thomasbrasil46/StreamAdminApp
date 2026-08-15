@@ -31,5 +31,33 @@ namespace StreamAdmin.Catalog.Controllers
                 return NotFound();
             return Ok(platform);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<PlatformVO>> CreatePlatform([FromBody] PlatformVO platform)
+        {
+            if (platform == null)
+                return BadRequest();
+            var createdPlatform = await _platformRepository.CreatePlatform(platform);
+            return Ok(platform);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<PlatformVO>> UpdatePlatform(PlatformVO platform)
+        {
+            if (platform == null)
+                return BadRequest();
+            var updatedPlatform = await _platformRepository.UpdatePlatform(platform);
+            if (updatedPlatform == null)
+                return NotFound();
+            return Ok(updatedPlatform);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<PlatformVO>> DeletePlatform(long id)
+        {
+            var platform = await _platformRepository.DeletePlatform(id);
+            if(!platform) return BadRequest();
+            return Ok(platform);
+        }
     }
 }
