@@ -8,7 +8,7 @@ namespace StreamAdmin.Catalog.Controllers
     [ApiController]
     public class PlanController : ControllerBase
     {
-        private IPlanRepository _planRepository;
+        private readonly IPlanRepository _planRepository;
 
         public PlanController(IPlanRepository planRepository)
         {
@@ -38,7 +38,7 @@ namespace StreamAdmin.Catalog.Controllers
             if (plan == null)
                 return BadRequest();
             var createdPlan = await _planRepository.CreatePlan(plan);
-            return Ok(plan);
+            return CreatedAtAction(nameof(GetPlanById), new { id = createdPlan.Id }, createdPlan);
         }
 
         [HttpPut]

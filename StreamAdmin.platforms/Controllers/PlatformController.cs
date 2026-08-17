@@ -8,7 +8,7 @@ namespace StreamAdmin.Catalog.Controllers
     [ApiController]
     public class PlatformController : ControllerBase
     {
-        private IPlatformRepository _platformRepository;
+        private readonly IPlatformRepository _platformRepository;
 
         public PlatformController(IPlatformRepository platformRepository)
         {
@@ -38,7 +38,7 @@ namespace StreamAdmin.Catalog.Controllers
             if (platform == null)
                 return BadRequest();
             var createdPlatform = await _platformRepository.CreatePlatform(platform);
-            return Ok(platform);
+            return CreatedAtAction(nameof(GetPlatformById), new { id = createdPlatform.Id }, createdPlatform);
         }
 
         [HttpPut]
@@ -56,7 +56,7 @@ namespace StreamAdmin.Catalog.Controllers
         public async Task<ActionResult<PlatformVO>> DeletePlatform(long id)
         {
             var platform = await _platformRepository.DeletePlatform(id);
-            if(!platform) return BadRequest();
+            if (!platform) return BadRequest();
             return Ok(platform);
         }
     }

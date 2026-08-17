@@ -10,7 +10,7 @@ namespace StreamAdmin.Catalog.Repository
     {
 
         private readonly MySQLContext _context;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public PlanRepository(MySQLContext context, IMapper mapper)
         {
@@ -18,7 +18,7 @@ namespace StreamAdmin.Catalog.Repository
             _mapper = mapper;
         }
 
-        public async Task<PlanVO> FindById(long id)
+        public async Task<PlanVO?> FindById(long id)
         {
             StreamingPlan? plan = await _context.StreamingPlans.Where(p => p.Id == id).FirstOrDefaultAsync();
             return _mapper.Map<PlanVO>(plan);

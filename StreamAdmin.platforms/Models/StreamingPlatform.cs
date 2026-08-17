@@ -25,8 +25,7 @@ namespace StreamAdmin.Catalog.Models
         [Required]
         public bool IsActive { get; set; }
 
-        [Required]
-        public ICollection<StreamingPlan> Plans { get; set; } = null!;
+        public ICollection<StreamingPlan> Plans { get; set; } = new List<StreamingPlan>();
 
 
         //ToDo: Add Logo property to the StreamingPlatform class. Check if is possible to add a blob or byte array to the database. If not, consider storing the logo as a URL or base64 string.

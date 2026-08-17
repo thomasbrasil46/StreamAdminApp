@@ -1,13 +1,9 @@
-﻿using StreamAdmin.Catalog.Models;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace StreamAdmin.Catalog.Data.ValueObjects
+﻿namespace StreamAdmin.Catalog.Data.ValueObjects
 {
     public class PlanVO
     {
+        public long Id { get; set; }
         public long StreamingPlatformId { get; set; }
-        public StreamingPlatform StreamingPlatform { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         public decimal ReferencePrice { get; set; }

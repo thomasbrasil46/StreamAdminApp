@@ -9,7 +9,7 @@ namespace StreamAdmin.Catalog.Repository
     public class PlatformRepository : IPlatformRepository
     {
         private readonly MySQLContext _context;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public PlatformRepository(MySQLContext context, IMapper mapper)
         {
@@ -17,15 +17,19 @@ namespace StreamAdmin.Catalog.Repository
             _mapper = mapper;
         }
 
-        public async Task<PlatformVO> FindById(long id)
+        public async Task<PlatformVO?> FindById(long id)
         {
-            StreamingPlatform? platform = await _context.StreamingPlatforms.Where(p => p.Id == id).FirstOrDefaultAsync();
+            StreamingPlatform? platform = await _context.StreamingPlatforms
+                .Include(p => p.Plans)
+                .FirstOrDefaultAsync(p => p.Id == id);
             return _mapper.Map<PlatformVO>(platform);
         }
 
         public async Task<IEnumerable<PlatformVO>> FindAllPlatforms()
         {
-            List<StreamingPlatform> platforms = await _context.StreamingPlatforms.ToListAsync();
+            List<StreamingPlatform> platforms = await _context.StreamingPlatforms
+                .Include(p => p.Plans)
+                .ToListAsync();
             return _mapper.Map<List<PlatformVO>>(platforms);
         }
 
@@ -49,7 +53,9 @@ namespace StreamAdmin.Catalog.Repository
         {
             try
             {
-                StreamingPlatform? platform = await _context.StreamingPlatforms.Where(p => p.Id == id).FirstOrDefaultAsync();
+                StreamingPlatform? platform = await _context.StreamingPlatforms
+                .Include(p => p.Plans)
+                .FirstOrDefaultAsync(p => p.Id == id);
                 if (platform == null)
                     return false;
                 _context.StreamingPlatforms.Remove(platform);
