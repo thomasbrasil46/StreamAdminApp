@@ -1,20 +1,23 @@
-<header class="bg-dark shadow-sm sticky-top">
-  <nav class="navbar navbar-expand-lg navbar-dark container py-3" aria-label="Navegação principal">
-    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="/home">
-      <span class="d-inline-flex align-items-center justify-content-center rounded-3 bg-primary text-white fs-5" style="width: 2.5rem; height: 2.5rem;">S</span>
-      StreamAdmin
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPages" aria-controls="navbarPages" aria-expanded="false" aria-label="Abrir menu de navegação">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarPages">
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-        <li class="nav-item"><a class="nav-link" href="/home">Início</a></li>
-        <li class="nav-item"><a class="nav-link" href="/home#recursos">Como funciona</a></li>
-        <li class="nav-item"><a class="nav-link" href="/home#assinaturas">Assinaturas</a></li>
-        <li class="nav-item"><a class="nav-link" href="/home#publico">Para quem é</a></li>
-        <li class="nav-item ms-lg-2"><a class="btn btn-primary px-4" href="/login">Entrar</a></li>
-      </ul>
+<header class="bg-dark sticky-top shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark py-3" aria-label="Navegação principal">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="/home">
+        <span class="d-inline-flex align-items-center justify-content-center rounded-3 bg-primary text-white fs-5" style="width: 2.5rem; height: 2.5rem;">S</span>
+        StreamAdmin
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPages" aria-controls="navbarPages" aria-expanded="false" aria-label="Abrir menu de navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarPages">
+        <ul class="navbar-nav mx-auto mb-3 mb-lg-0 gap-lg-2">
+          <li class="nav-item"><a class="nav-link" routerLink="/home">Início</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/home" fragment="assinaturas">Assinaturas</a></li>
+        </ul>
+        <div class="d-flex flex-column flex-lg-row gap-lg-2">
+          <a class="btn btn-primary px-4" routerLink="/login">Entrar</a>
+          <a class="btn btn-outline-light px-4" routerLink="/home" fragment="recursos">Recursos</a>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
