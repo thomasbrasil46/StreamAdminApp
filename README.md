@@ -1,7 +1,8 @@
 # StreamAdminApp
 
 
-> Plataforma para gerenciamento centralizado de assinaturas de serviços de streaming, permitindo acompanhar planos, custos, utilização e oportunidades de economia.
+> StreamAdmin é uma aplicação de gestão pessoal de assinaturas e consumo de serviços digitais, permitindo acompanhar gastos, utilização e custo-benefício dos serviços contratados.
+
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![.NET](https://img.shields.io/badge/.NET-10.0-purple)
