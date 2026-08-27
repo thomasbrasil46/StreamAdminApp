@@ -3,6 +3,7 @@
     <Project Path="StreamAdminFront/StreamAdminFront.csproj" />
   </Folder>
   <Folder Name="/Services/">
+    <Project Path="SrtreamAdmin.Subscription/SrtreamAdmin.Subscription.csproj" Id="0402d19a-7a3c-4c64-8680-91bd56e56c2a" />
     <Project Path="StreamAdmin.platforms/StreamAdmin.Catalog.csproj" Id="3ac7cff3-989f-42ab-bc0e-9ad26dbf6495" />
   </Folder>
 </Solution>

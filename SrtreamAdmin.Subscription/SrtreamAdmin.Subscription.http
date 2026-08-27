@@ -1,0 +1,6 @@
+@SrtreamAdmin.Subscription_HostAddress = http://localhost:5111
+
+GET {{SrtreamAdmin.Subscription_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
