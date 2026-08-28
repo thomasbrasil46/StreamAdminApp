@@ -5,15 +5,15 @@ namespace StreamAdmin.Subscription.Data.ValueObject
 {
     public class SubscriptionVO
     {
-        public long UserId { get; private set; }                
-        public long PlatformId { get; private set; }        
-        public long? PlanId { get; private set; }                
-        public Money Price { get; private set; } = null!;                
-        public BillingCycle BillingCycle { get; private set; }                
-        public DateTime StartedAt { get; private set; }        
-        public DateTime? NextBillingDate { get; private set; }        
-        public DateTime? CancelledAt { get; private set; }        
-        public SubscriptionStatus Status { get; private set; }        
-        public string? Notes { get; private set; }
+        public long UserId { get; set; }                
+        public long PlatformId { get; set; }        
+        public long? PlanId { get; set; }                
+        public Money Price { get; set; } = null!;                
+        public BillingCycle BillingCycle { get; set; }                
+        public DateTime StartedAt { get; set; }        
+        public DateTime? NextBillingDate { get; set; }        
+        public DateTime? CancelledAt { get; set; }        
+        public SubscriptionStatus Status { get; set; }        
+        public string? Notes { get; set; }
     }
 }
