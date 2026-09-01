@@ -5,6 +5,7 @@ namespace StreamAdmin.Subscription.Data.ValueObject
 {
     public class SubscriptionVO
     {
+        public long Id { get; set; }
         public long UserId { get; set; }                
         public long PlatformId { get; set; }        
         public long? PlanId { get; set; }                

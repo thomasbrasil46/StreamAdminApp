@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using StreamAdmin.Subscription.Config;
 using StreamAdmin.Subscription.Models.Context;
 using StreamAdmin.Subscription.Repository;
+using StreamAdmin.Subscription.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,13 @@ builder.Services.AddAutoMapper(
 );
 
 builder.Services.AddScoped<IUserSubscriptionRepository, UserSubscriptionRepository>();
+builder.Services.AddHttpClient<IPlatformCatalogClient, PlatformCatalogClient>(client =>
+{
+    string catalogUrl = builder.Configuration["ServiceUrls:PlatformCatalog"]
+        ?? throw new InvalidOperationException("ServiceUrls:PlatformCatalog nao foi configurada.");
+    client.BaseAddress = new Uri(catalogUrl);
+    client.Timeout = TimeSpan.FromSeconds(5);
+});
 
 var app = builder.Build();
 

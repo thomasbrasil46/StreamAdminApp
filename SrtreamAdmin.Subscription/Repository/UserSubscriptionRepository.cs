@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using StreamAdmin.Subscription.Data.ValueObject;
 using StreamAdmin.Subscription.Models;
 using StreamAdmin.Subscription.Models.Context;
-using System.Numerics;
 
 namespace StreamAdmin.Subscription.Repository
 {
@@ -20,6 +19,15 @@ namespace StreamAdmin.Subscription.Repository
         public async Task<IEnumerable<SubscriptionVO>> FindAllSubscriptions()
         {
             List<UserSubscription> subscriptions = await _context.UserSubscriptions.ToListAsync();
+            return _mapper.Map<List<SubscriptionVO>>(subscriptions);
+        }
+        public async Task<IEnumerable<SubscriptionVO>> FindByUserId(long userId)
+        {
+            List<UserSubscription> subscriptions = await _context.UserSubscriptions
+                .AsNoTracking()
+                .Where(subscription => subscription.UserId == userId)
+                .OrderBy(subscription => subscription.Id)
+                .ToListAsync();
             return _mapper.Map<List<SubscriptionVO>>(subscriptions);
         }
         public async Task<SubscriptionVO?> FindById(long id)
