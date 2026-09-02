@@ -24,4 +24,8 @@
     <Folder Include="Models\Context\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StreamAdmin.platforms\StreamAdmin.Catalog.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,5 @@
+using StreamAdmin.Catalog.Models.Base;
 using System.Net;
-using System.Net.Http.Json;
 
 namespace StreamAdmin.Subscription.Services;
 
@@ -33,11 +33,11 @@ public class PlatformCatalogClient : IPlatformCatalogClient
                 if (!response.IsSuccessStatusCode)
                     return PlatformCatalogValidationResult.CatalogUnavailable;
 
-                CatalogPlan? plan = await response.Content.ReadFromJsonAsync<CatalogPlan>(cancellationToken);
+                StreamingPlatform? plan = await response.Content.ReadFromJsonAsync<StreamingPlatform>(cancellationToken);
                 if (plan is null)
                     return PlatformCatalogValidationResult.CatalogUnavailable;
 
-                return plan.StreamingPlatformId == platformId
+                return plan.Id == platformId
                     ? PlatformCatalogValidationResult.Valid
                     : PlatformCatalogValidationResult.PlanDoesNotBelongToPlatform;
             }
@@ -65,8 +65,8 @@ public class PlatformCatalogClient : IPlatformCatalogClient
         }
     }
 
-    private sealed class CatalogPlan
+    private sealed class StreamingPlatform : BaseEntity
     {
-        public long StreamingPlatformId { get; set; }
+        public long Id { get; set; }
     }
 }
