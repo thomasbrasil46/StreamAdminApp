@@ -11,6 +11,7 @@
         <label for="userFullName">Nome completo</label>
         <input
           id="userFullName"
+          [(ngModel)]="newUserAccessObj.userFullName"
           name="userFullName"
           type="text"
           placeholder="Digite seu nome completo"
@@ -23,6 +24,7 @@
         <label for="userEmail">E-mail</label>
         <input
           id="userEmail"
+          [(ngModel)]="newUserAccessObj.userEmail"
           name="userEmail"
           type="email"
           placeholder="voce@exemplo.com"
@@ -35,6 +37,7 @@
         <label for="userPassword">Senha</label>
         <input
           id="userPassword"
+          [(ngModel)]="newUserAccessObj.userPassword"
           name="userPassword"
           type="password"
           placeholder="Crie uma senha segura"
@@ -46,7 +49,7 @@
         <small id="password-help">Use pelo menos 8 caracteres.</small>
       </div>
 
-      <button type="submit">Criar minha conta</button>
+      <button type="submit" (click)="onSaveUser()">Criar minha conta</button>
     </form>
   </section>
 </main>
