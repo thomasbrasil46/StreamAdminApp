@@ -7,6 +7,7 @@ public class MySQLContext : DbContext
     public MySQLContext() { }
     public MySQLContext(DbContextOptions<MySQLContext> options) : base(options) {}
     public DbSet<UserSubscription> UserSubscriptions => Set<UserSubscription>();
+    public DbSet<UserAccess> UserAccesses => Set<UserAccess>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

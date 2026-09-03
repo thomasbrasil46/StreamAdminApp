@@ -12,6 +12,7 @@ namespace StreamAdmin.Subscription.Config
             var mappingConfig = new MapperConfiguration(config =>
             {
                 config.CreateMap<SubscriptionVO, UserSubscription>();
+                config.CreateMap<AccessVO, UserAccess>();               
             },
             NullLoggerFactory.Instance);
 

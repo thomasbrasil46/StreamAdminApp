@@ -25,6 +25,7 @@ builder.Services.AddAutoMapper(
 );
 
 builder.Services.AddScoped<IUserSubscriptionRepository, UserSubscriptionRepository>();
+builder.Services.AddScoped<IUserAccessRepository, UserAccessRepository>();
 builder.Services.AddHttpClient<IPlatformCatalogClient, PlatformCatalogClient>(client =>
 {
     string catalogUrl = builder.Configuration["ServiceUrls:PlatformCatalog"]
