@@ -1,4 +1,13 @@
-import { Service } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable, Service } from '@angular/core';
 
-@Service()
-export class MasterService {}
+@Injectable({
+    providedIn: 'root',
+})
+export class MasterService {
+    http = inject(HttpClient);
+
+    onRegisterUser(obj:any) {
+        return this.http.post('https://localhost:7157/api/UserAccess', obj);
+    }
+}

@@ -1,0 +1,52 @@
+<main class="registration-page">
+  <section class="registration-card" aria-labelledby="registration-title">
+    <div class="registration-intro">
+      <span class="eyebrow">Nova conta</span>
+      <h1 id="registration-title">Crie seu acesso</h1>
+      <p>Preencha seus dados abaixo para começar.</p>
+    </div>
+
+    <form class="registration-form">
+      <div class="form-field">
+        <label for="userFullName">Nome completo</label>
+        <input
+          id="userFullName"
+          name="userFullName"
+          type="text"
+          placeholder="Digite seu nome completo"
+          autocomplete="name"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="userEmail">E-mail</label>
+        <input
+          id="userEmail"
+          name="userEmail"
+          type="email"
+          placeholder="voce@exemplo.com"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="userPassword">Senha</label>
+        <input
+          id="userPassword"
+          name="userPassword"
+          type="password"
+          placeholder="Crie uma senha segura"
+          autocomplete="new-password"
+          minlength="8"
+          aria-describedby="password-help"
+          required
+        >
+        <small id="password-help">Use pelo menos 8 caracteres.</small>
+      </div>
+
+      <button type="submit">Criar minha conta</button>
+    </form>
+  </section>
+</main>
